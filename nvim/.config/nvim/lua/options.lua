@@ -7,6 +7,7 @@ vim.api.nvim_set_option('smartcase', true)
 vim.api.nvim_set_option('inccommand', 'split')
 -- clipboard
 vim.opt.clipboard:append 'unnamedplus'
+vim.opt.autoread = true
 
 -- window api
 vim.api.nvim_win_set_option(0, 'number', true)
@@ -29,5 +30,15 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
     vim.api.nvim_buf_set_option(0, 'tabstop', 2)
     vim.api.nvim_buf_set_option(0, 'shiftwidth', 0)
     vim.api.nvim_buf_set_option(0, 'expandtab', true)
+  end,
+})
+
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI', 'TermClose', 'TermLeave' }, {
+  pattern = '*',
+  group = vim.api.nvim_create_augroup('auto_checktime', {}),
+  callback = function()
+    if vim.bo.buftype == '' then
+      vim.cmd 'checktime'
+    end
   end,
 })
