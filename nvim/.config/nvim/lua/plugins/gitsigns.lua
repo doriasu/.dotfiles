@@ -132,6 +132,7 @@ return {
           vim.cmd("silent! diffoff!")
         end
         vim.cmd("Gitsigns diffthis " .. sha)
+        vim.cmd("windo setlocal nofoldenable")
       end
 
       vim.keymap.set("n", "<leader>nv", function()
