@@ -117,6 +117,84 @@ return {
         return sha, target.revision
       end
 
+      local function normalize_origin_to_https(origin)
+        if not origin or origin == "" then
+          return nil
+        end
+
+        local url = origin:gsub("%s+$", "")
+
+        if url:match("^https?://") then
+          return (url:gsub("%.git$", ""))
+        end
+
+        local host, path = url:match("^git@([^:]+):(.+)$")
+        if host and path then
+          return ("https://%s/%s"):format(host, path:gsub("%.git$", ""))
+        end
+
+        local user, host2, path2 = url:match("^ssh://([^@]+)@([^/]+)/(.+)$")
+        if user and host2 and path2 then
+          host2 = host2:gsub(":%d+$", "")
+          return ("https://%s/%s"):format(host2, path2:gsub("%.git$", ""))
+        end
+
+        return nil
+      end
+
+      local function open_url(url)
+        if vim.ui and vim.ui.open then
+          local ok = pcall(vim.ui.open, url)
+          if ok then
+            return true
+          end
+        end
+
+        local cmd
+        if vim.fn.has("mac") == 1 then
+          cmd = { "open", url }
+        elseif vim.fn.has("win32") == 1 then
+          cmd = { "cmd", "/c", "start", "", url }
+        else
+          cmd = { "xdg-open", url }
+        end
+
+        local job = vim.fn.jobstart(cmd, { detach = true })
+        return job > 0
+      end
+
+      local function open_line_commit_on_origin()
+        local sha = line_commit_sha()
+        if not sha then
+          vim.notify("この行のコミットSHAを取得できなかったのだ", vim.log.levels.WARN)
+          return
+        end
+
+        local status = vim.b[bufnr].gitsigns_status_dict or {}
+        local root = status.root
+        if not root then
+          vim.notify("gitリポジトリのルートを取得できなかったのだ", vim.log.levels.WARN)
+          return
+        end
+
+        local remote = vim.fn.systemlist({ "git", "-C", root, "remote", "get-url", "origin" })[1]
+        if vim.v.shell_error ~= 0 or not remote then
+          vim.notify("originのURLを取得できなかったのだ", vim.log.levels.WARN)
+          return
+        end
+
+        local base_url = normalize_origin_to_https(remote)
+        if not base_url then
+          vim.notify("origin URLの形式に対応できなかったのだ: " .. remote, vim.log.levels.WARN)
+          return
+        end
+
+        local commit_url = base_url .. "/commit/" .. sha
+        if not open_url(commit_url) then
+          vim.notify("ブラウザを開けなかったのだ: " .. commit_url, vim.log.levels.WARN)
+        end
+      end
+
       local function show_line_revision(parent)
         local sha, current_revision = line_commit_sha()
         if not sha then
@@ -142,6 +220,10 @@ return {
       vim.keymap.set("n", "<leader>nV", function()
         show_line_revision(true)
       end, { buffer = bufnr, desc = "diff file before line commit" })
+
+      vim.keymap.set("n", "<leader>no", function()
+        open_line_commit_on_origin()
+      end, { buffer = bufnr, desc = "open line commit on origin" })
     end,
   },
 }
