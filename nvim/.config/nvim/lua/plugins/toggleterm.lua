@@ -28,6 +28,12 @@ return {
       count = 3,
       hidden = true,
     })
+    local lazygit_term = Terminal:new({
+      direction = "float",
+      cmd = "lazygit",
+      count = 4,
+      hidden = true,
+    })
 
     vim.keymap.set({ "n", "t" }, "<leader>t", function()
       floating_term:toggle()
@@ -40,5 +46,9 @@ return {
     vim.keymap.set({ "n", "t" }, '<leader>"', function()
       horizontal_term:toggle()
     end, { desc = "Horizontal terminal" })
+
+    vim.keymap.set({ "n", "t" }, '<leader>lg', function()
+      lazygit_term:toggle()
+    end, { desc = "lazygit terminal" })
   end,
 }
