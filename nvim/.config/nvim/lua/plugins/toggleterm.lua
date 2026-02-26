@@ -47,7 +47,7 @@ return {
       horizontal_term:toggle()
     end, { desc = "Horizontal terminal" })
 
-    vim.keymap.set({ "n", "t" }, '<leader>lg', function()
+    vim.keymap.set({ "n", "t" }, '<leader>gg', function()
       lazygit_term:toggle()
     end, { desc = "lazygit terminal" })
   end,
