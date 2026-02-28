@@ -6,7 +6,7 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   keys = {
-    {mode = "n", "<leader>b", "<cmd>NvimTreeToggle<CR>", desc = "NvimTreeをトグルする"},
+    {mode = "n", "<leader>b", "<cmd>NvimTreeFindFileToggle<CR>", desc = "NvimTreeをトグルする"},
     {
       mode = "n",
       "<leader>m",
