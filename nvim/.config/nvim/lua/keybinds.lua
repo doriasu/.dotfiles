@@ -5,6 +5,6 @@ vim.api.nvim_set_keymap('i', 'jj', '<Esc>', {})
 -- buffer move
 vim.api.nvim_set_keymap('n','<leader>h','<cmd>bprev<CR>',{})
 vim.api.nvim_set_keymap('n','<leader>l','<cmd>bnext<CR>',{})
-vim.api.nvim_set_keymap('n','<leader>x','<cmd>bdelete<CR>',{})
+vim.api.nvim_set_keymap('n','<leader>x','<cmd>BDelete this<CR>',{})
 -- terminal mode
 vim.api.nvim_set_keymap('t', '<C-w>', [[<C-\><C-n>]], {noremap = true})
