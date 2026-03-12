@@ -9,6 +9,12 @@ vim.api.nvim_set_option('inccommand', 'split')
 vim.opt.clipboard:append 'unnamedplus'
 vim.opt.autoread = true
 
+vim.filetype.add({
+  extension = {
+    slim = 'slim',
+  },
+})
+
 -- window api
 vim.api.nvim_win_set_option(0, 'number', true)
 vim.api.nvim_win_set_option(0, 'cursorline', true)

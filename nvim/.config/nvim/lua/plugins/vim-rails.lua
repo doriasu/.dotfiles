@@ -2,7 +2,7 @@ return {
   "tpope/vim-rails",
   -- Rails コマンドを現在バッファでも確実に初期化させるため、
   -- キー押下時ロードではなく Ruby 系ファイルで先に読み込むのだ。
-  ft = { "ruby", "eruby" },
+  ft = { "ruby", "eruby", "slim" },
   config = function()
     vim.g.rails_projections = {
       ["lib/*.rb"] = {

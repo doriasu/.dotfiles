@@ -16,6 +16,7 @@ return {
         'json',
         'yaml',
         'html',
+        'slim',
         'css'
       },
       auto_install = true,
