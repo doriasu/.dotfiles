@@ -146,6 +146,10 @@ return {
     vim.api.nvim_create_autocmd("InsertLeave", {
       pattern = "*",
       callback = function()
+        if vim.g.coc_enable_insertleave_fix_and_format ~= true then
+          return
+        end
+
         local bufnr = vim.api.nvim_get_current_buf()
         -- 変更がないなら何もしない（無駄なフォーマットを避ける）
         if not vim.bo.modified then

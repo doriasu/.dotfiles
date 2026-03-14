@@ -8,6 +8,7 @@ vim.api.nvim_set_option('inccommand', 'split')
 -- clipboard
 vim.opt.clipboard:append 'unnamedplus'
 vim.opt.autoread = true
+vim.g.coc_enable_insertleave_fix_and_format = false
 
 vim.filetype.add({
   extension = {
