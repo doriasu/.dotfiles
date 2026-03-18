@@ -75,6 +75,20 @@
       "command": "ruby-lsp",
       "filetypes": ["ruby"],
       "rootPatterns": ["Gemfile", ".git"]
+    },
+    "rust": {
+      "command": "rust-analyzer",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml", "rust-project.json", ".git"],
+      "initializationOptions": {
+        "checkOnSave": true,
+        "cargo": {
+          "allFeatures": true
+        },
+        "procMacro": {
+          "enable": true
+        }
+      }
     }
   },
   "editor.codeActionsOnSave": {

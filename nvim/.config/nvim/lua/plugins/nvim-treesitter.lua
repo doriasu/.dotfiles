@@ -8,6 +8,7 @@ return {
         'lua',
         'vim',
         'vimdoc',
+        'rust',
         'javascript',
         'typescript',
         'python',
