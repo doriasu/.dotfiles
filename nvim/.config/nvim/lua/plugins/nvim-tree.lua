@@ -21,6 +21,8 @@ return {
     },
   },
   config = function()
+    local api = require("nvim-tree.api")
+
     local function resolve_startup_dir()
       local argv = vim.fn.argv()
       local uv = vim.uv or vim.loop
@@ -37,10 +39,30 @@ return {
     end
 
     local function on_attach(bufnr)
-      local api = require("nvim-tree.api")
-
       api.config.mappings.default_on_attach(bufnr)
       pcall(vim.keymap.del, "n", "u", {buffer = bufnr})
+    end
+
+    local function remember_tree_width()
+      local last_width = nil
+      local Event = api.events.Event
+
+      api.events.subscribe(Event.TreeOpen, function()
+        if last_width == nil then
+          return
+        end
+
+        api.tree.resize({ absolute = last_width })
+      end)
+
+      api.events.subscribe(Event.TreeClose, function()
+        local winid = api.tree.winid()
+        if winid == nil or not vim.api.nvim_win_is_valid(winid) then
+          return
+        end
+
+        last_width = vim.api.nvim_win_get_width(winid)
+      end)
     end
 
     local startup_dir, has_directory_arg = resolve_startup_dir()
@@ -65,5 +87,7 @@ return {
         ignore = true,
       }
     }
+
+    remember_tree_width()
   end,
 }
