@@ -1,5 +1,5 @@
 {
-  "alpha-nvim": { "branch": "main", "commit": "a9d8fb72213c8b461e791409e7feabb74eb6ce73" },
+  "alpha-nvim": { "branch": "main", "commit": "fdb675257c7317fd068fe3224465781ad335751d" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
   "catppuccin": { "branch": "main", "commit": "426dbebe06b5c69fd846ceb17b42e12f890aedf1" },
   "close-buffers.nvim": { "branch": "master", "commit": "3acbcad1211572342632a6c0151f839e7dead27f" },
@@ -14,7 +14,7 @@
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
   "vim-rails": { "branch": "master", "commit": "b0a5c76f86ea214ade36ab0b811e730c3f0add67" },
-  "vim-test": { "branch": "master", "commit": "c6c74fa3fcc6d9687362b407245aea580f17d922" },
+  "vim-test": { "branch": "master", "commit": "bca51394b5febc6e50492d88e8e124f5c5147087" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "winresizer": { "branch": "master", "commit": "d1c5a4533b07879275878d4aefa91468421576e4" }
 }
