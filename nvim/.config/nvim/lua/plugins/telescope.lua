@@ -5,7 +5,7 @@ return {
   keys = {
     {
       mode = "n",
-      "<leader>f",
+      "<leader>ff",
       function()
         local builtin = require("telescope.builtin")
         local ok = pcall(builtin.git_files, { show_untracked = true })
@@ -15,7 +15,8 @@ return {
       end,
       desc = "git管理ならgit_files、非管理ならfind_files"
     },
-    { mode = "n", "<leader>g", "<cmd>Telescope live_grep<CR>", desc = "文字列検索" }
+    { mode = "n", "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "文字列検索" },
+    { mode = "n", "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "バッファー検索" },
   },
   config = function()
     require('telescope').setup({
