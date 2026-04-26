@@ -19,6 +19,7 @@ return {
 
     local vertical_term = Terminal:new({
       direction = "vertical",
+      size = function() return math.floor(vim.o.columns * 0.5) end,
       count = 2,
       hidden = true,
     })
