@@ -14,4 +14,12 @@ config.hide_tab_bar_if_only_one_tab = true
 config.enable_tab_bar = false
 -- 余白をなくして下端に張り付かせる
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
+-- CMD+W でのタブ/ウィンドウクローズを無効化
+config.keys = {
+  {
+    key = 'w',
+    mods = 'CMD',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+}
 return config
