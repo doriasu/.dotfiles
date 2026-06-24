@@ -18,6 +18,7 @@ vim.filetype.add({
 
 -- window api
 vim.api.nvim_win_set_option(0, 'number', true)
+vim.api.nvim_win_set_option(0, 'relativenumber', true)
 vim.api.nvim_win_set_option(0, 'cursorline', true)
 vim.opt.splitright = true
 -- コードの外側を何行許容するか
