@@ -7,7 +7,7 @@ return {
       flavour = "frappe", -- latte, frappe, macchiato, mocha
       transparent_background = true,
       term_colors = true,
-      custom_highlights = function()
+      custom_highlights = function(colors)
         return {
           -- 共通フロート
           NormalFloat = { bg = "NONE" },
@@ -31,6 +31,10 @@ return {
           -- split separator (toggleterm vertical/horizontal を含む)
           WinSeparator = { fg = "#ffffff", bg = "NONE", bold = true },
           VertSplit = { fg = "#ffffff", bg = "NONE", bold = true },
+
+          -- 行番号を少し見やすくする
+          LineNr = { fg = colors.subtext0 },
+          CursorLineNr = { fg = colors.text, bold = true },
         }
       end,
       integrations = {
