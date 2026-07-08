@@ -46,17 +46,16 @@
   "prettier.trailingComma": "es5",
   "prettier.jsxSingleQuote": false,
   "prettier.arrowParens": "always",
-  "coc.preferences.formatter": "prettier",
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "css",
-    "scss",
-    "markdown"
-  ],
+
+  "[ruby]": {
+    "coc.preferences.formatOnSave": true,
+    "coc.preferences.formatterExtension": null
+  },
+
+  "[javascript][javascriptreact][typescript][typescriptreact][json][css][scss][markdown]": {
+    "coc.preferences.formatOnSave": true,
+    "coc.preferences.formatterExtension": "coc-prettier"
+  },
 
   // React/JSX設定
   "typescript.preferences.importModuleSpecifier": "relative",
