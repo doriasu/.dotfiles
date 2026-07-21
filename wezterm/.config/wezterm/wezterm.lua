@@ -5,7 +5,10 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 config.automatically_reload_config = true
 -- 背景を透過
-config.window_background_opacity = 0.7
+config.window_background_opacity = 1.0
+config.colors = {
+  background = '#000000',
+}
 -- タイトルバーの削除
 config.window_decorations = "RESIZE"
 -- タブバーの削除
